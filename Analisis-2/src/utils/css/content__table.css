@@ -1,0 +1,19 @@
+.tabla__title{
+    font-size: 1rem;
+}
+.content__tabla {
+    width: 250px;
+    margin: 5px;
+    background: #333;
+    border-radius: 12px;
+}
+th {
+    padding-left: 5px;
+    text-align: left;
+    width: 30%;
+}
+
+td {
+    background-color: #999797;
+    color: black;
+}

@@ -1,0 +1,41 @@
+.ventas-anuales:nth-child(1) {
+    width: 95%;
+    margin: 0 calc((100% - 95%) / 2);
+}
+
+h2{
+    color: black;
+    padding: 10px;
+    background-color: rgb(182, 180, 182);
+    margin: 2rem 0;
+}
+table {
+    width: 300px;
+    margin: 20px calc((100% - 300px) / 2);
+    background-color: rgba(53, 52, 53);
+}
+
+tr {
+    margin: 0;
+    cursor: pointer;
+}
+
+th {
+    padding: .6rem;
+    background-color: rgba(53, 52, 53);
+    transition: 0.25s;
+}
+
+td {
+    color: rgb(230, 225, 230);
+    background-color: rgba(53, 52, 52);
+}
+
+tr:nth-child(2n) td {
+    color: black;
+    background-color: rgb(182, 180, 182);
+}
+
+tr:hover td {
+    transform: scale(1.25);
+}
