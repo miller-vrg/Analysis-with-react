@@ -1,12 +1,12 @@
 import React from "react";
 import axios from "axios";
 import "./css/content.css";
-import DemoLine from "../components/common/DemoLine";
-import DemoColumn from "../components/common/DemoColumn";
-import DemoColumnDouble from "../components/common/DemoColumnDouble";
-import DemoPie from "../components/common/DemoPie";
-import DemoBarHorinzontal from "../components/common/DemoBarHorizontal";
-import Table from "../utils/Table";
+import TotalVictimas from "../components/common/section_victimas/TotalVictimas";
+import ClasificacionVictimas from "../components/common/section_victimas/ClasificacionVictimas";
+import VictimasGenero from "../components/common/section_victimas/VictimasGenero";
+import Agresores from "../components/common/section_victimas/Agresores";
+import CasosSustancias from "../components/common/section_victimas/CasosSustancias";
+import UbicacionCasos from "../components/common/section_victimas/UbicacionesCasos";
 
 export default class Content extends React.Component {
   constructor(props) {
@@ -420,7 +420,6 @@ export default class Content extends React.Component {
         this.state.sustancias.si +
         this.state.sustancias.no
       );
-      const link_genero = <a href="#genero">víctimas por género</a>
       const link1 = <a href="https://tusabogadosycontadores.co/blog/conozca-que-es-la-violencia-intrafamiliar-y-los-tipos-que-existen/">Leer más.</a>
       const link2 = <a href="https://www.juridicospenales.com/blog/que-es-la-violencia-intrafamiliar-en-colombia/">Leer más.</a>
       return (
@@ -443,150 +442,12 @@ export default class Content extends React.Component {
             debido al principio constitucional de igualdad de derechos y 
             responsabilidades de los cónyuges y respeto mutuo de todos los 
             miembros. {link2}</p>
-            <section className="content__card" id="conclusion">
-              <h2>Total de victimas</h2>
-              <div className="content__descipcion">
-                <div className="content__descipcion___grafic">
-                  <DemoLine datos={this.state.total_year}/>
-                </div>
-                <div className="content__interno">
-                  <p className="content__interno-texto">
-                  La gráfica nos muestra una comparación entre los años 2020, 
-                  2021 y 2022, mostrando un aumentó en el año 2021 en 
-                  comparación del año 2020 y el 2022 hasta el momento, pero 
-                  no podemos descartar el hecho de que muchas personas no 
-                  presentan estas denuncias, son más los casos que nunca sé 
-                  Reportan.
-                  </p>
-                  <div className="content__table">
-                    <Table promedio={promedioTotal} media={promedioTotal/2} moda={0}/>
-                  </div>
-                </div>
-              </div>
-            </section>
-            <section className="content__card" id="">
-              <h2>Clasificación de victimas</h2>
-              <div className="content__descipcion">
-                <div className="content__descipcion___grafic">
-                  <DemoBarHorinzontal datos={clasificacion__year }/>
-                </div>
-                <div className="content__interno">
-                  <p className="content__interno-texto">
-                    Comparando en cada año veremos que la mayoría de víctimas 
-                    son adultos, seguido de los jóvenes entre 12 y 26 años de 
-                    edad, los niños quisas tengan una menor parte pero no 
-                    podemos descartar la idea de que los niños no son tan libres 
-                    como denunciar a sus padres, y para la minoría adultos mayores 
-                    con solo una pequeña parte de casos vistos pero de igual forma 
-                    algunos de hechos también son silenciados por sus propias familias.
-                  </p>
-                  <div className="content__table">
-                  <Table title="2020" promedio={promedioCalsificacion[2020]/3} media={promedioCalsificacion[2020]/2} moda={0}/>
-                  <Table title="2021" promedio={promedioCalsificacion[2021]/3} media={promedioCalsificacion[2021]/2} moda={0}/>
-                  <Table title="2022" promedio={promedioCalsificacion[2022]/3} media={promedioCalsificacion[2022]/2} moda={0}/>
-                </div>
-                </div>
-              </div>
-            </section>
-            <section className="content__card" id="genero">
-              <h2>Victimas por genero</h2>
-              <div className="content__descipcion">
-                <div className="content__descipcion___grafic">
-                  <DemoColumnDouble datos={sexo_victimas_anuales}/>
-                </div>
-                <div className="content__interno">
-                  <p className="content__interno-texto">
-                    En el año 2020 los casos por violencias intrafamiliar fueron más 
-                    notorios en el sexo femenino mostrando una gran violencia en 
-                    comparación del sexo opuesto. No obstante, en el siguiente año 
-                    se disparó los índices de violencia sobre el sexo masculino, incluso 
-                    mucho mayor que el femenino en el año anterior. Además, en el actual 
-                    hasta el momento el sexo femenino se ve mucho más afectado por la 
-                    violencia intrafamiliar, pero no podemos tener conclusiones hasta 
-                    no finalizar el año actual.
-                  </p>
-                  <div className="content__table">
-                    <Table title="2020" promedio={promedioGenero[2020]/3} media={promedioGenero[2020]/2} moda={0}/>
-                    <Table title="2021" promedio={promedioGenero[2021]/3} media={promedioGenero[2021]/2} moda={0}/>
-                    <Table title="2022" promedio={promedioGenero[2022]/3} media={promedioGenero[2022]/2} moda={0}/>
-                </div>
-                </div>
-              </div>
-            </section>
-            <section className="content__card">
-              <h2>Agresores</h2>
-              <div className="content__descipcion">
-                <div className="content__descipcion___grafic">
-                  <DemoPie datos={agresores}/>
-                </div>
-                <div className="content__interno">
-                  <p className="content__interno-texto">
-                  En la mayoría de los casos los agresores fueron 
-                  parejas de las víctimas, con un porcentaje de 
-                  60.71% mucho más de la mitad mostrando el caso 
-                  de violencias causadas por parejas como visto 
-                  en el análisis de {link_genero} la mayoría 
-                  de los casos vistos son de mujeres siendo víctimas 
-                  de violencia intrafamiliar. No obstante, el 26.71% 
-                  de los casos fueron causados por familiares de las 
-                  víctimas o parientes cercanos. Seguido de un 6.83% 
-                  causado por padres mostrando una pequeña parte junto 
-                  al 5.75% de la madre, demostrando que la mayoría de 
-                  estos casos no son denunciados, ya que los niños están 
-                  bajo el manto de 
-                  </p>
-                  <div className="content__table">
-                    <Table promedio={promedioAgresor/3} media={promedioAgresor/2} moda={0}/>
-                </div>
-                </div>
-              </div>
-            </section>
-            <section className="content__card">
-              <h2>Casos por sustancias y sin sustancias</h2>
-              <div className="content__descipcion">
-                <div className="content__descipcion___grafic">
-                  <DemoPie datos={sustenacias}/>
-                </div>
-                <div className="content__interno">
-                  <p className="content__interno-texto">
-                    Podemos notar que la mayoría de estos casos 
-                    con un porcentaje de 98.26% son causados 
-                    sin presentar consumo de sustancias, podríamos 
-                    decir que son causados por disgustos internos de 
-                    las familias mostrando una gran parte del análisis 
-                    y solo 1.71% es causado bajo el uso de sustancias 
-                    Dándonos a conocer que los casos expresados son ataques
-                    de forma consiente sobre sus víctimas.
-                  </p>
-                  <div className="content__table">
-                    <Table promedio={promedioSustancias/3} media={promedioSustancias/2} moda={0}/>
-                </div>
-                </div>
-              </div>
-            </section>
-            <section className="content__card">
-              <h2>Ubiciacion del casos</h2>
-              <div className="content__descipcion">
-                <div className="content__descipcion___grafic">
-                  <DemoColumn datos={ubiciacion} />
-                </div>
-                <div className="content__interno">
-                  <p className="content__interno-texto">
-                    Podríamos decir que la mayoría de los casos 
-                    fueron en lugares fuera del hogar, ya que 
-                    Demuestra que tenemos un total de 644 casos 
-                    13 de vía pública y 631 en otras partes, puesto que 
-                    se ven estos casos mucho más frecuentes fuera 
-                    del hogar, pero no podemos ignorar que un gran 
-                    parte de casos son vistos en hogar con cantidad 
-                    de 580.
-                  </p>
-                  <div className="content__table">
-                    <Table promedio={promedioSustancias/3} media={promedioSustancias/2} moda={0}/>
-                </div>
-                </div>
-              </div>
-            </section>
+           <TotalVictimas promedio={promedioTotal} datos={this.state.total_year}/>
+           <ClasificacionVictimas datos={clasificacion__year} promedio={promedioCalsificacion}/>
+           <VictimasGenero promedio={promedioGenero} datos={sexo_victimas_anuales}/>
+           <Agresores datos={agresores} promedio={promedioAgresor}/>
+           <CasosSustancias datos={sustenacias} promedio={promedioSustancias}/>
+           <UbicacionCasos datos={ubiciacion} promedio={promedioSustancias}/>
           </main>
         </>
       );

@@ -1,17 +1,19 @@
-import { Column } from '@ant-design/plots';
+import { Column } from "@ant-design/plots";
 
 const DemoColumn = (props) => {
-
   const data = props.datos;
-  console.log(data);
   const config = {
     data,
-    xField: 'type',
-    yField: 'value',
-    seriesField: '',
+    xField: "type",
+    yField: "value",
+    seriesField: "",
     color: ({ year }) => {
-      if(year == "2020"){return "#b7ff6b"}
-      if(year == "2021"){return "#fff569"}
+      if (year == "2020") {
+        return "#b7ff6b";
+      }
+      if (year == "2021") {
+        return "#fff569";
+      }
       return "#84fff8";
     },
     label: {
